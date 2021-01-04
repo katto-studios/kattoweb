@@ -41,10 +41,12 @@ nav{
 main{
     text-align: left;
     display: inline-grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 50% auto;
     height: 100vh;
     width: 90%;
     max-width: 1200px;
+
+    overflow: hidden;
 }
 
 main div{
@@ -76,6 +78,8 @@ section.solutions{
 
 section.solutions img{
     border-radius: 80px;
+    width: 100%;
+    margin:auto;
 }
 
 section.solutions div{
@@ -117,7 +121,7 @@ section.about .about-card p{
 }
 
 section.technologies{
-    margin-bottom: 50px;
+    margin: 0 30px 50px;
 }
 
 section.technologies i{
@@ -129,14 +133,18 @@ section.contact{
     padding: 50px;
     background: #ebdec4;
     color: var(--c1);
-    width: 90%;
     margin: auto;
-    max-width: 700px;
+    max-width: 600px;
     border-radius: 50px;
 }
 
 section.contact h1{
     font-size: 30px;
+    margin-bottom: 10px;
+}
+
+section.contact p{
+    text-align: left;
 }
 
 section.contact a{
@@ -152,4 +160,33 @@ section.contact a{
 footer{
     padding: 50px;
     color:#878788
+}
+
+@media only screen and (max-width: 1000px) {
+    section.solutions{
+        display: inline-block;
+    }
+
+    section.solutions h1{
+        margin-top: 10px;
+    }
+
+    section.solutions p{
+        margin-bottom: 50px;
+    }
+
+    section.about{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    section.about{
+        grid-template-columns: 1fr;
+    }
+
+    section.contact{
+        border-radius: 0px;
+    }
 }
