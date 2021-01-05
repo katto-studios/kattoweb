@@ -62,9 +62,10 @@ main{
     text-align: left;
     display: inline-grid;
     grid-template-columns: 50% auto;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 200px);
     width: 90%;
-    max-width: 1200px;
+	max-width: 1200px;
+	margin-bottom: 100px;
 
     overflow: hidden;
 }
