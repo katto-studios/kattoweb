@@ -81,7 +81,7 @@ main h1{
 }
 
 main img{
-    height: 1000px;
+    height: calc(100vh - 200px);
 }
 
 .img-1 { grid-area: img1; }
