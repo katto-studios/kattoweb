@@ -59,6 +59,10 @@ main h1{
     line-height: 90%;
 }
 
+main img{
+    height: 1000px;
+}
+
 .img-1 { grid-area: img1; }
 .img-2 { grid-area: img2; }
 .txt-1 { grid-area: txt1; }
