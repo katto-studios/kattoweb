@@ -214,4 +214,8 @@ footer{
     section.contact{
         border-radius: 0px;
     }
+
+    img.logo{
+        display: none;
+    }
 }
