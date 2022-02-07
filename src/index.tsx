@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import './styles/main.css';
+import './styles/boostrap-utilities.css';
 import Home from './pages/Home';
 import reportWebVitals from './reportWebVitals';
 

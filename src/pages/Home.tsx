@@ -18,9 +18,10 @@ export default function Home() {
 				onBeforePageScroll={handleBeforePageChange}
 				customPageNumber={pageNumber}>
 				<LandingScreen />
-				<LandingScreen />
+				<ProjectsSection />
+				<ContactUs />
 			</ReactPageScroller>
-			<div className='page-number'>{pageNumber}</div>
+			<div className='page-number center-x'>{pageNumber! + 1}</div>
 		</React.Fragment>
 	);
 }
@@ -29,8 +30,9 @@ function LandingScreen() {
 	return (
 		<div className='fullscreen'>
 			<div className='center limit600'>
-				<img src='artisan.jpg' width={600} />
+				<img src='artisan.jpg' className='limit600' />
 				<h1>Artisans of the digital age.</h1>
+
 				<p
 					style={{
 						color: 'gray',
@@ -41,7 +43,7 @@ function LandingScreen() {
 					}}>
 					photographed by @quinoal
 				</p>
-				<p>
+				<p className='small-text'>
 					Praesent gravida tempus augue, in efficitur ex volutpat
 					vitae. Aliquam euismod augue convallis feugiat interdum. Nam
 					arcu mauris, imperdiet eget neque eu, accumsan mattis leo.
@@ -52,5 +54,121 @@ function LandingScreen() {
 				</p>
 			</div>
 		</div>
+	);
+}
+
+function ProjectsSection() {
+	return (
+		<LeftRight
+			leftContent={<FlexibleImage url={'artisan.jpg'} rounded />}
+			rightContent={
+				<div className='ml-2 mr-2'>
+					<p
+						style={{
+							color: 'gray',
+							position: 'absolute',
+							right: 0,
+							bottom: -20,
+							fontSize: 8,
+						}}>
+						photographed by @quinoal
+					</p>
+					<h1>hand-crafted projects</h1>
+					<p className='small-text'>
+						Praesent gravida tempus augue, in efficitur ex volutpat
+						vitae. Aliquam euismod augue convallis feugiat interdum.
+						Nam arcu mauris, imperdiet eget neque eu, accumsan
+						mattis leo. Mauris ut leo auctor, rhoncus augue a,
+						vehicula enim. Etiam tempor erat nulla, vel iaculis
+						nulla placerat vel. Curabitur ut bibendum urna. Vivamus
+						in libero vitae enim dictum vulputate a vitae nibh.
+					</p>
+					<a href='/'>gallery</a>
+				</div>
+			}
+		/>
+	);
+}
+
+function ContactUs() {
+	return (
+		<LeftRight
+			leftFr={2}
+			rightFr={1}
+			rightOnTop
+			leftContent={<FlexibleImage url={'artisan.jpg'} rounded />}
+			rightContent={
+				<div className='ml-3'>
+					<h1>get in touch with us</h1>
+					<p className='small-text'>
+						email:{' '}
+						<a href='mailto:contact@katto.studio'>
+							contact@katto.studio
+						</a>
+						<br />
+						instagram:{' '}
+						<a href='https://instagram.com/kattostudios'>
+							@kattostudios
+						</a>
+						<br />
+						<br />
+						(c) Copyright 2022, Katto Studios LLP <br />
+						Website Designed by Ryan Tan
+					</p>
+				</div>
+			}
+		/>
+	);
+}
+
+interface LeftRightProps {
+	leftContent: any;
+	rightContent: any;
+	leftFr?: number;
+	rightFr?: number;
+	rightOnTop?: boolean;
+}
+
+function LeftRight(props: LeftRightProps) {
+	return (
+		<div className='fullscreen'>
+			<div
+				className='center limit800 left-right-container'
+				style={{
+					gridTemplateColumns: `${
+						props.leftFr != undefined ? props.leftFr : 1
+					}fr ${props.rightFr != undefined ? props.rightFr : 1}fr`,
+				}}>
+				<div className={props.rightOnTop ? 'right' : 'left'}>
+					{props.leftContent}
+				</div>
+				<div className={props.rightOnTop ? 'left' : 'right'}>
+					{props.rightContent}
+				</div>
+			</div>
+		</div>
+	);
+}
+
+interface FlexibleImageProps {
+	url: string;
+	width?: number;
+	height?: number;
+	rounded?: boolean;
+	className?: string;
+}
+
+function FlexibleImage(props: FlexibleImageProps) {
+	return (
+		<div
+			style={{
+				width: props.width != undefined ? props.width : '100%',
+				height: props.height != undefined ? props.height : '100%',
+				background: `url(${props.url}) no-repeat center center`,
+				backgroundSize: 'cover',
+			}}
+			className={`${props.rounded ? 'rounded30' : ''}${
+				props.className != undefined ? props.className : ''
+			}`}></div>
 	);
 }
