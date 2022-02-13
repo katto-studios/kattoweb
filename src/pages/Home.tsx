@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactPageScroller from 'react-page-scroller';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 export default function Home() {
-	const [pageNumber, setPageNumber] = React.useState<number>();
+	const params = useParams();
+	const [pageNumber, setPageNumber] = React.useState<number>(
+		Number(params.pageNumber) - 1
+	);
 
 	function handlePageChange(number: number) {
 		setPageNumber(number);
+		window.history.pushState('', '', `/${number + 1}`);
 	}
 
 	function handleBeforePageChange() {}
@@ -58,6 +63,12 @@ function LandingScreen() {
 }
 
 function ProjectsSection() {
+	const navigate = useNavigate();
+
+	const gotoGallery = () => {
+		navigate('/gallery');
+	};
+
 	return (
 		<LeftRight
 			leftContent={<FlexibleImage url={'artisan.jpg'} rounded />}
@@ -83,7 +94,7 @@ function ProjectsSection() {
 						nulla placerat vel. Curabitur ut bibendum urna. Vivamus
 						in libero vitae enim dictum vulputate a vitae nibh.
 					</p>
-					<a href='/'>gallery</a>
+					<Link to='/gallery'>gallery</Link>
 				</div>
 			}
 		/>
@@ -158,7 +169,7 @@ interface FlexibleImageProps {
 	className?: string;
 }
 
-function FlexibleImage(props: FlexibleImageProps) {
+export function FlexibleImage(props: FlexibleImageProps) {
 	return (
 		<div
 			style={{

@@ -5,11 +5,15 @@ import './styles/main.css';
 import './styles/boostrap-utilities.css';
 import Home from './pages/Home';
 import reportWebVitals from './reportWebVitals';
+import Gallery from './pages/Gallery';
 
 ReactDOM.render(
 	<BrowserRouter>
 		<Routes>
-			<Route path='/' element={<Home />} />
+			<Route path='/' element={<Home />}>
+				<Route path=':pageNumber' element={<Home />} />
+			</Route>
+			<Route path='/gallery' element={<Gallery />} />
 		</Routes>
 	</BrowserRouter>,
 	document.getElementById('root')
