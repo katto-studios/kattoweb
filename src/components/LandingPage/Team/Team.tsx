@@ -21,14 +21,13 @@ export default function Team(props: any) {
 						<div>
 							<img src='/peeps/ryan.png' />
 							<h2>Ryan Tan</h2>
-							<h4>Founder</h4>
+							<h4>Founder, Frontend Engineer</h4>
 							<p>
-								Lorem ipsum dolor sit amet consectetur
-								adipisicing elit. Similique voluptatum
-								doloremque, nam optio laboriosam corrupti
-								recusandae accusantium quisquam distinctio
-								beatae ut tempora cumque repellendus! Cum aut
-								officiis atque fugit blanditiis.
+								<ul>
+									<li>Web Application Development</li>
+									<li>UI/UX design</li>
+									<li>Game Programming</li>
+								</ul>
 							</p>
 						</div>
 
@@ -36,28 +35,23 @@ export default function Team(props: any) {
 							<img src='/peeps/park.png' />
 							<h2>Daniel Park</h2>
 							<h4>Co-Founder, Creative Director</h4>
-							<p>
-								Lorem ipsum dolor sit amet consectetur
-								adipisicing elit. Similique voluptatum
-								doloremque, nam optio laboriosam corrupti
-								recusandae accusantium quisquam distinctio
-								beatae ut tempora cumque repellendus! Cum aut
-								officiis atque fugit blanditiis.
-							</p>
+							<ul>
+								<li>3D Modelling and Texturing</li>
+								<li>2D Game Assets</li>
+								<li>Game Design and Programming</li>
+							</ul>
 						</div>
 
 						<div>
 							<img src='/peeps/tiong.png' />
 							<h2>Tan Tiong Guan</h2>
 							<h4>Co-Founder, Backend Engineer</h4>
-							<p>
-								Lorem ipsum dolor sit amet consectetur
-								adipisicing elit. Similique voluptatum
-								doloremque, nam optio laboriosam corrupti
-								recusandae accusantium quisquam distinctio
-								beatae ut tempora cumque repellendus! Cum aut
-								officiis atque fugit blanditiis.
-							</p>
+							<ul>
+								<li>Game Server Development</li>
+								<li>Cloud Deployment</li>
+								<li>Database Management</li>
+								<li>Game Programming</li>
+							</ul>
 						</div>
 					</div>
 				</div>

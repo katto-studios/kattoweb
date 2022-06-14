@@ -4,11 +4,11 @@ export default function Splash() {
 	return (
 		<>
 			<main>
-				<div>
+				<div className='column'>
 					<Landing3D />
 				</div>
-				<div>
-					<div className='center-y'>
+				<div className='column'>
+					<div className='center-y center-all-mobile'>
 						<h1>Artisans of the digital age</h1>
 						<p>
 							We create hand-crafted interactive digital solutions

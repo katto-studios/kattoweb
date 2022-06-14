@@ -156,7 +156,6 @@ body {
 
 .team .columns img {
 	max-width: 300px;
-
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
@@ -182,12 +181,14 @@ body {
 .article h1,
 .article h2,
 .article h3,
-.article h4 {
+.article h4,
+.article .tag {
 	text-align: center;
 }
 
 .article img {
 	margin: auto;
+	width: 100%;
 }
 
 .gallery {
@@ -207,4 +208,36 @@ body {
 
 .article-listing {
 	margin: 20px 0;
+}
+
+@media only screen and (max-width: 1000px) {
+	.columns {
+		grid-template-columns: 1fr;
+		gap: 50px;
+	}
+
+	
+	.services .content {
+		padding: 40px;
+	}
+
+	.team .content {
+		padding: 40px;
+	}
+
+	main .column {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		text-align: left;
+	}
+
+	.center-all-mobile {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 }

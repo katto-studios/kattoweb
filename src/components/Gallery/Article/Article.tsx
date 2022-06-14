@@ -23,6 +23,16 @@ export default function Article() {
 
 	return (
 		<div className='article'>
+			<h1>{currentArticle.header}</h1>
+			<h4>{new Date(currentArticle.date).toDateString()}</h4>
+			<h4 style={{marginTop: 10}}>
+			{currentArticle.tags.map((tag) => (
+				<div className='tag' style={{ display: 'inline' }}>
+					{tag}
+				</div>
+			))}
+			</h4>
+			<br/><br/>
 			<ReactMarkdown>{currentArticle.content}</ReactMarkdown>
 		</div>
 	);

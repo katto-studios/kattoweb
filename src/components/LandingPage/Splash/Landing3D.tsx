@@ -1,5 +1,6 @@
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useRef, useState } from 'react';
+import { Suspense, useRef, useState } from 'react';
+import Lokitable from './Lokitable';
 
 function Box(props: any) {
 	// This reference will give us direct access to the mesh
@@ -30,8 +31,7 @@ export default function Landing3D() {
 			<mesh>
 				<ambientLight />
 				<pointLight position={[10, 10, 10]} />
-				<Box position={[-1.2, 0, 0]} />
-				<Box position={[1.2, 0, 0]} />
+				<Suspense fallback={null}><Lokitable/></Suspense>
 			</mesh>
 		</Canvas>
 	);
