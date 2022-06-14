@@ -21,12 +21,12 @@ export default function Services(props: any) {
 						<div>
 							<h2>🎮 Game Development Services</h2>
 							<p>
-								Lorem ipsum dolor sit amet consectetur
-								adipisicing elit. Similique voluptatum
-								doloremque, nam optio laboriosam corrupti
-								recusandae accusantium quisquam distinctio
-								beatae ut tempora cumque repellendus! Cum aut
-								officiis atque fugit blanditiis.
+								Specialising in, but not limited to, Unity3d and
+								Web, we dedicate ourselves to building Web and
+								Native applications available across all modern
+								platforms*. From Edu-tech to passion projects,
+								bring your dream projects to life with Katto
+								Studios.
 							</p>
 							<br />
 							<Link className='button' to='/'>
@@ -37,12 +37,11 @@ export default function Services(props: any) {
 						<div>
 							<h2>💻 Web Solutions</h2>
 							<p>
-								Lorem ipsum dolor sit amet consectetur
-								adipisicing elit. Similique voluptatum
-								doloremque, nam optio laboriosam corrupti
-								recusandae accusantium quisquam distinctio
-								beatae ut tempora cumque repellendus! Cum aut
-								officiis atque fugit blanditiis.
+								Reinvigorate your website with custom built web
+								experiences - from unique responsive web
+								applications to engaging 3d experiences powered
+								by ThreeJS. Deployment, web hosting and
+								maintenance services are also provided.
 							</p>
 							<br />
 							<Link className='button' to='/'>
@@ -53,12 +52,12 @@ export default function Services(props: any) {
 						<div>
 							<h2>🏗️ Rapid Prototyping Services</h2>
 							<p>
-								Lorem ipsum dolor sit amet consectetur
-								adipisicing elit. Similique voluptatum
-								doloremque, nam optio laboriosam corrupti
-								recusandae accusantium quisquam distinctio
-								beatae ut tempora cumque repellendus! Cum aut
-								officiis atque fugit blanditiis.
+								For projects in its preliminary phase, we can
+								model affordable and quick projects that can be
+								brought to venture capitalists for idea testing.
+								These projects will be great for user discovery,
+								and will be built on open source and in-house
+								boilerplates and templates.
 							</p>
 							<br />
 							<Link className='button' to='/'>
