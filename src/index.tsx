@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Link, Route, Router, Routes } from 'react-router-dom';
+import { HashRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import './styles/main.css';
 import './styles/boostrap-utilities.css';
 import Home from './pages/Home';
@@ -9,7 +9,7 @@ import Article from './components/Gallery/Article/Article';
 import Gallery from './components/Gallery/Gallery';
 
 ReactDOM.render(
-	<BrowserRouter>
+	<Router>
 		<nav>
 			<Link to='/'>home</Link>
 			<Link to='/gallery'>gallery</Link>
@@ -24,7 +24,7 @@ ReactDOM.render(
 		<p className='footer'>
 			Copyright © 2021 - 2022 Katto Studios. All Rights Reserved
 		</p>
-	</BrowserRouter>,
+	</Router>,
 	document.getElementById('root')
 );
 

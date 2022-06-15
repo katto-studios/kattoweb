@@ -1,7 +1,7 @@
 {
 	"name": "kattoweb",
 	"version": "0.1.0",
-	"homepage": "https://katto.studio/",
+	"homepage": "https://katto.studio",
 	"private": true,
 	"dependencies": {
 		"@react-three/drei": "^9.13.0",
@@ -25,7 +25,7 @@
 		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
-		"predeploy": "npm run build",
+		"predeploy": "yarn build",
 		"deploy": "gh-pages -d build",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
