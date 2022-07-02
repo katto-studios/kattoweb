@@ -4,6 +4,8 @@ import NavBar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
 import Footer from './components/Footer';
+import Gallery from './pages/Gallery';
+import Article from './pages/Article';
 
 function App() {
   return (
@@ -11,7 +13,16 @@ function App() {
       <HashRouter>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/gallery" element={<Gallery />}></Route>
+          <Route path="/article/:articleId" element={<Article />} />
+          <Route
+            path="*"
+            element={
+              <h1 style={{ marginTop: '30vh', textAlign: 'center' }}>
+                Page Not Found
+              </h1>
+            }></Route>
         </Routes>
         <Footer />
       </HashRouter>
