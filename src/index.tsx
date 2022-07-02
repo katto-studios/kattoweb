@@ -1,31 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { HashRouter as Router, Link, Route, Routes } from 'react-router-dom';
-import './styles/main.css';
-import './styles/boostrap-utilities.css';
-import Home from './pages/Home';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Article from './components/Gallery/Article/Article';
-import Gallery from './components/Gallery/Gallery';
 
-ReactDOM.render(
-	<Router>
-		<nav>
-			<Link to='/'>home</Link>
-			<Link to='/gallery'>gallery</Link>
-			<a className='button'>contact</a>
-		</nav>
-		<Routes>
-			<Route path='/' element={<Home />} />
-
-			<Route path='/gallery' element={<Gallery />} />
-			<Route path='/gallery/*' element={<Article />} />
-		</Routes>
-		<p className='footer'>
-			Copyright © 2021 - 2022 Katto Studios. All Rights Reserved
-		</p>
-	</Router>,
-	document.getElementById('root')
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
