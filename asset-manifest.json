@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.d18a9f75.css",
-    "main.js": "/static/js/main.e723657b.js",
-    "static/js/787.1e2d69d1.chunk.js": "/static/js/787.1e2d69d1.chunk.js",
-    "index.html": "/index.html",
-    "main.d18a9f75.css.map": "/static/css/main.d18a9f75.css.map",
-    "main.e723657b.js.map": "/static/js/main.e723657b.js.map",
-    "787.1e2d69d1.chunk.js.map": "/static/js/787.1e2d69d1.chunk.js.map"
+    "main.css": "/katto.studio/static/css/main.f0d685eb.css",
+    "main.js": "/katto.studio/static/js/main.5ba119d9.js",
+    "static/js/787.74b852fe.chunk.js": "/katto.studio/static/js/787.74b852fe.chunk.js",
+    "index.html": "/katto.studio/index.html",
+    "main.f0d685eb.css.map": "/katto.studio/static/css/main.f0d685eb.css.map",
+    "main.5ba119d9.js.map": "/katto.studio/static/js/main.5ba119d9.js.map",
+    "787.74b852fe.chunk.js.map": "/katto.studio/static/js/787.74b852fe.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d18a9f75.css",
-    "static/js/main.e723657b.js"
+    "static/css/main.f0d685eb.css",
+    "static/js/main.5ba119d9.js"
   ]
 }
