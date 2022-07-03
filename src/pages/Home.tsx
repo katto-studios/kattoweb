@@ -22,7 +22,7 @@ export default function Home() {
       <Container
         style={{
           paddingTop: 70,
-          background: `url("/5bg.jpg") no-repeat center center fixed`,
+          background: `url("/5bg.jpg") no-repeat center center`,
           backgroundSize: 'cover',
           height: '100vh',
           textAlign: 'center',
@@ -73,8 +73,8 @@ export default function Home() {
               <div
                 className="d-block w-100"
                 style={{
-                  background: `url("${article.thumbnailUrl}") no-repeat center center fixed`,
-                  boxShadow: '0 -150px 500px 100px rgba(0,0,0,0.9) inset',
+                  background: `url("${article.thumbnailUrl}") no-repeat center center`,
+                  boxShadow: '0 -150px 150px rgba(0,0,0,0.8) inset',
                   backgroundSize: 'cover',
                   height: '80vh',
                   textAlign: 'center',
