@@ -1,5 +1,5 @@
-import { Badge, Button, Card, Stack } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import { Badge, Card, Stack } from 'react-bootstrap';
 import { Article } from '../types/article';
 
 type ArticleCardProps = {
@@ -7,14 +7,14 @@ type ArticleCardProps = {
 };
 
 export default function ArticleCard(props: ArticleCardProps) {
-  const navigate = useNavigate();
-
   const { id, title, summary, thumbnailUrl, tags } = props.article;
+
+  const router = useRouter();
 
   return (
     <Card
       onClick={() => {
-        navigate(`/article/${id}`);
+        router.push(`/article/${id}`);
       }}>
       <Card.Img variant="top" src={thumbnailUrl} />
       <Card.Body>

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import {
   Alert,
   Badge,
@@ -9,14 +10,13 @@ import {
   Row,
   Stack,
 } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 import { articlesList } from '../articles';
 import Profile from '../components/Profile';
 import Service from '../components/Service';
 import ServiceIcon from '../components/ServiceIcon';
 
 export default function Home() {
-  const navigate = useNavigate();
+  const router = useRouter();
   return (
     <>
       <Container
@@ -95,13 +95,13 @@ export default function Home() {
                   <p className="mt-3">{article.summary}</p>
                   <Button
                     className="mx-1"
-                    onClick={() => navigate(`gallery`)}
+                    onClick={() => router.push(`gallery`)}
                     variant="outline-primary">
                     Gallery
                   </Button>
                   <Button
                     className="mx-1"
-                    onClick={() => navigate(`article/${article.id}`)}>
+                    onClick={() => router.push(`article/${article.id}`)}>
                     Read more about {article.title}
                   </Button>
                 </Container>

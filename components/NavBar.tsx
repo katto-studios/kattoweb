@@ -1,12 +1,13 @@
+import { useRouter } from 'next/router';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function NavBar() {
-  const navigate = useNavigate();
+  const router = useRouter();
   return (
     <Navbar fixed="top" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand onClick={() => navigate('/')}>
+        <Navbar.Brand onClick={() => router.push('/')}>
           <img
             alt=""
             src="/LOGO-WHITE.png"
@@ -17,8 +18,8 @@ export default function NavBar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Nav>
-          <Nav.Link onClick={() => navigate('/')}>Home</Nav.Link>
-          <Nav.Link onClick={() => navigate('/gallery')}>Gallery</Nav.Link>
+          <Nav.Link onClick={() => router.push('/')}>Home</Nav.Link>
+          <Nav.Link onClick={() => router.push('/gallery')}>Gallery</Nav.Link>
           {/* <Nav.Link>Gallery</Nav.Link> */}
           <Button
             onClick={() => (document.location = 'mailto:contact@katto.studio')}>
