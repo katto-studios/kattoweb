@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
 
 export default function NavBar() {
   const router = useRouter();
