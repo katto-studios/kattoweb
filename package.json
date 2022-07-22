@@ -1,56 +1,51 @@
 {
-	"name": "kattoweb",
-	"version": "0.1.0",
-	"homepage": "https://katto.studio/",
-	"private": true,
-	"dependencies": {
-		"@react-three/drei": "^9.13.0",
-		"@react-three/fiber": "^8.0.12",
-		"@testing-library/jest-dom": "^5.16.4",
-		"@testing-library/react": "^12.1.5",
-		"@testing-library/user-event": "^13.5.0",
-		"@types/jest": "^27.5.0",
-		"@types/node": "^16.11.33",
-		"@types/react": "^17.0.44",
-		"@types/react-dom": "^17.0.16",
-		"react": "^18.1.0",
-		"react-dom": "^18.1.0",
-		"react-icons": "^4.3.1",
-		"react-markdown": "^8.0.3",
-		"react-page-scroller": "^2.2.1",
-		"react-router-dom": "^6.3.0",
-		"react-scripts": "5.0.0",
-		"three": "^0.140.0",
-		"typescript": "^4.6.4",
-		"web-vitals": "^2.1.4"
-	},
-	"scripts": {
-		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build",
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject"
-	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	},
-	"devDependencies": {
-		"gh-pages": "^4.0.0"
-	}
+  "name": "katto-web-new",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://katto.studio",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.1.3",
+    "next": "lastest",
+    "react": "latest",
+    "react-bootstrap": "^2.4.0",
+    "react-dom": "latest",
+    "react-markdown": "^8.0.3",
+    "typescript": "^4.7.4",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^28.1.4",
+    "@types/node": "^18.0.0",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
+    "gh-pages": "^4.0.0"
+  }
 }
