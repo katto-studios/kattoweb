@@ -47,7 +47,7 @@ export default function Home() {
           <Row>
             <Col sm>
               <Service
-                header="🎮 Inteactive Media/Game Development Services"
+                header="🎮 Interactive Media/Game Development Services"
                 content="Specialising in, but not limited to, Unity3d and Web, we dedicate ourselves to building Web and Native applications available across all modern platforms*. From 'Edu-tech' to your dream game, bring your dream projects to life with us."
               />
             </Col>
