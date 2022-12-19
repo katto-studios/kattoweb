@@ -5,6 +5,7 @@ import '@fontsource/inter';
 import { theme } from './theme';
 import { useEffect } from 'react';
 import NavBar from '../components/navigation/NavBar';
+import Footer from '../components/footer/footer';
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -14,6 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ChakraProvider theme={theme}>
       <NavBar />
       <Component {...pageProps} />
+      <Footer />
     </ChakraProvider>
   );
 }
