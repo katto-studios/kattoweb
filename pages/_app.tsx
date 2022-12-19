@@ -1,6 +1,21 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+// pages/_app.js
+import { ChakraProvider } from '@chakra-ui/react';
+import { AppProps } from 'next/app';
+import '@fontsource/inter';
+import { theme } from './theme';
+import { useEffect } from 'react';
+import NavBar from '../components/navigation/NavBar';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    window.localStorage.setItem('chakra-ui-color-mode', 'light');
+  }, []);
+  return (
+    <ChakraProvider theme={theme}>
+      <NavBar />
+      <Component {...pageProps} />
+    </ChakraProvider>
+  );
 }
+
+export default MyApp;
