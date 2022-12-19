@@ -1,7 +1,8 @@
-import { extendTheme } from '@chakra-ui/theme-utils';
+import { extendTheme } from "@chakra-ui/theme-utils";
+import { withProse } from "@nikolovlazar/chakra-ui-prose";
 
 const config = {
-  initialColorMode: 'light',
+  initialColorMode: "light",
   useSystemColorMode: false,
   fonts: {
     heading: `'Inter', sans-serif`,
@@ -9,4 +10,4 @@ const config = {
   },
 };
 
-export const theme = extendTheme(config);
+export const theme = extendTheme(config, withProse({}));

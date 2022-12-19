@@ -1,4 +1,4 @@
-import { HamburgerIcon } from '@chakra-ui/icons';
+import { HamburgerIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -15,11 +15,11 @@ import {
   ring,
   Stack,
   Text,
-} from '@chakra-ui/react';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { navLinks } from './nav-links';
+} from "@chakra-ui/react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { navLinks } from "./nav-links";
 
 export type NavBarProps = {};
 
@@ -40,12 +40,12 @@ export default function NavBar(props: NavBarProps) {
       <Container maxW="container.xl">
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Image src="/logo-black.png" alt="logo" width={90} height={90} />
-          <IconButton aria-label={'menu'} mr={3} onClick={onOpen}>
+          <IconButton aria-label={"menu"} mr={3} onClick={onOpen}>
             <HamburgerIcon />
           </IconButton>
         </Box>
       </Container>
-      <Drawer isOpen={isDrawerOpen} placement={'right'} onClose={onClose}>
+      <Drawer isOpen={isDrawerOpen} placement={"right"} onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
@@ -55,9 +55,13 @@ export default function NavBar(props: NavBarProps) {
             <Stack>
               {navLinks.map((navLink, i) => (
                 <Button
-                  onClick={() => router.push(navLink.url)}
+                  onClick={async () => {
+                    await router.push(navLink.url);
+                    onClose();
+                  }}
                   key={i}
-                  variant={router.asPath === navLink.url ? 'solid' : 'ghost'}>
+                  variant={router.asPath === navLink.url ? "solid" : "ghost"}
+                >
                   {navLink.label}
                 </Button>
               ))}

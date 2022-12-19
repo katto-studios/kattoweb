@@ -12,10 +12,10 @@ import {
   Heading,
   SimpleGrid,
   Text,
-} from '@chakra-ui/react';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { servicesData } from './services-data';
+} from "@chakra-ui/react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { servicesData } from "./services-data";
 
 export type ServicesProps = {};
 
@@ -24,11 +24,12 @@ export default function Services(props: ServicesProps) {
   return (
     <Container maxW="container.xl">
       <Heading size="md" mb={5} color="GrayText">
-        Our Services
+        About our services
       </Heading>
       <SimpleGrid
         spacing={4}
-        templateColumns={{ base: 'repeat(1,1fr)', md: 'repeat(3, 1fr)' }}>
+        templateColumns={{ base: "repeat(1,1fr)", md: "repeat(3, 1fr)" }}
+      >
         {servicesData.map((serviceData, i) => (
           <Card key={i} variant="outline">
             <CardHeader>
@@ -45,11 +46,11 @@ export default function Services(props: ServicesProps) {
               <Heading size="md">{serviceData.header}</Heading>
               <Text>{serviceData.body}</Text>
             </CardBody>
-            <CardFooter>
+            {/* <CardFooter>
               <Button onClick={() => router.push(serviceData.link)}>
                 View projects
               </Button>
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         ))}
       </SimpleGrid>
