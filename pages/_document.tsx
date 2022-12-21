@@ -1,6 +1,6 @@
-import { ColorModeScript, CSSReset } from '@chakra-ui/react';
-import { Html, Head, Main, NextScript } from 'next/document';
-import { theme } from './theme';
+import { ColorModeScript, CSSReset } from "@chakra-ui/react";
+import { Html, Head, Main, NextScript } from "next/document";
+import { theme } from "../utils/theme";
 
 export default function Document() {
   return (

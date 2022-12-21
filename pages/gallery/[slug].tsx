@@ -9,12 +9,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Prose } from "@nikolovlazar/chakra-ui-prose";
-import {
-  MDXRemote,
-  MDXRemoteProps,
-  MDXRemoteSerializeResult,
-} from "next-mdx-remote";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
+import { ReactNode } from "react";
 import {
   getFileReadStaticPaths,
   getFileReadStaticProps,
@@ -26,7 +23,7 @@ export type BlogPostPageProps = {
   content: MDXRemoteSerializeResult;
 };
 
-export const components: MDXRemoteProps["components"] = {
+export const components: any = {
   Image,
 };
 
