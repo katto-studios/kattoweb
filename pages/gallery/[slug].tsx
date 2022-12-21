@@ -34,7 +34,7 @@ export default function BlogPostPage({
   frontmatter,
   content,
 }: BlogPostPageProps) {
-  const { id, date, title, description, author, tags } = frontmatter;
+  const { id, date, title, description, author, tags, image } = frontmatter;
 
   return (
     <Box minH="100vh" p={3} pt={20}>
@@ -45,7 +45,7 @@ export default function BlogPostPage({
           <Box mt={3}>
             {tags.map((tag, i) => (
               <Tag key={i} mr={2} mb={2}>
-                {tag}
+                <b>{tag}</b>
               </Tag>
             ))}
           </Box>

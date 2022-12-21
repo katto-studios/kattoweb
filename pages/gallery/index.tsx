@@ -39,7 +39,7 @@ export default function GalleryPage({ allPostsData }: GalleryPageProps) {
                   src={postData.image ?? "/img/game.png"}
                   alt={""}
                   fill
-                  style={{ objectFit: "contain" }}
+                  style={{ objectFit: "cover", borderRadius: 5 }}
                 />
               </Box>
               <Heading size="md">{postData.title}</Heading>

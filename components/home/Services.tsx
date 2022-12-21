@@ -43,7 +43,9 @@ export default function Services(props: ServicesProps) {
               </Center>
             </CardHeader>
             <CardBody>
-              <Heading size="md">{serviceData.header}</Heading>
+              <Heading size="md" mb={3}>
+                {serviceData.header}
+              </Heading>
               <Text>{serviceData.body}</Text>
             </CardBody>
             {/* <CardFooter>
