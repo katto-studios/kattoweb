@@ -1,5 +1,5 @@
-import { Box, Container, Stack, Text } from '@chakra-ui/react';
-import Link from 'next/link';
+import { Box, Container, Stack, Text } from "@chakra-ui/react";
+import Link from "next/link";
 
 export type FooterProps = {};
 
@@ -8,10 +8,7 @@ export default function Footer(props: FooterProps) {
     <Box p={10} background="gray.100">
       <Container maxW="container.xl">
         <Stack>
-          <Link href={'instragram.com/kattostudios'}>
-            <Text fontSize="sm">instagram: @kattostudios</Text>
-          </Link>
-          <Link href={'mailto:contact@katto.studio'}>
+          <Link href={"mailto:contact@katto.studio"}>
             <Text fontSize="sm">email: contact@katto.studio</Text>
           </Link>
           <Text fontSize="xs" pt={5}>

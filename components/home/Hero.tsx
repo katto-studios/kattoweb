@@ -6,9 +6,9 @@ import {
   Text,
   keyframes,
   Code,
-} from '@chakra-ui/react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+} from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 export type HeroProps = {};
 
@@ -29,7 +29,8 @@ export default function Hero(props: HeroProps) {
             w="fit-content"
             mb={10}
             as={motion.div}
-            animation={animation}>
+            animation={animation}
+          >
             <Image
               src="/img/dog.png"
               width={200}
@@ -37,11 +38,15 @@ export default function Hero(props: HeroProps) {
               alt="dog in space"
             />
           </Box>
-          <Heading size={{ base: 'lg', md: 'xl' }}>
-            Artisans of the{' '}
-            <Code color="pink.400" fontSize={{ base: 'xl', md: '28' }}>
+          <Heading size={{ base: "lg", md: "xl" }}>
+            Artisans of the{" "}
+            <Code
+              color="pink.400"
+              fontSize={{ base: "xl", md: "28" }}
+              style={{ borderRadius: 5, padding: 5 }}
+            >
               &apos;digital&apos;
-            </Code>{' '}
+            </Code>{" "}
             age
           </Heading>
           <Text>We hand craft user centric digital solutions</Text>
