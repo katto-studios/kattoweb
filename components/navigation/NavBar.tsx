@@ -58,8 +58,8 @@ export default function NavBar(props: NavBarProps) {
   }
 
   return (
-    <Box position="fixed" w="100vw">
-      <Container maxW="container.xl">
+    <Box position="fixed" w="100vw" style={{ zIndex: 1000 }} bgColor="white">
+      <Container maxW="container.xl" p={5}>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Image src="/logo-black.png" alt="logo" width={90} height={90} />
           {!isLargerThan800 && (
