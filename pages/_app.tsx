@@ -6,6 +6,7 @@ import { theme } from "../utils/theme";
 import { useEffect } from "react";
 import NavBar from "../components/navigation/NavBar";
 import Footer from "../components/footer/footer";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -13,6 +14,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
   return (
     <ChakraProvider theme={theme}>
+      <Head>
+        <title>Katto Studios</title>
+      </Head>
       <NavBar />
       <Component {...pageProps} />
       <Footer />

@@ -38,7 +38,7 @@ export default function Hero(props: HeroProps) {
               alt="dog in space"
             />
           </Box>
-          <Heading size={{ base: "lg", md: "xl" }}>
+          <Heading size={{ base: "lg", md: "xl" }} fontWeight={600}>
             Artisans of the{" "}
             <Code
               color="pink.400"
