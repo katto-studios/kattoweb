@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
 import path from "path";
 import { getSortedPostsData, PostData } from "../../utils/post";
 import Link from "next/link";
@@ -10,8 +9,10 @@ export type GalleryPageProps = {
   allPostsData: PostData[];
 };
 
-export default function GalleryPage() {
-  const allPostsData = getSortedPostsData(path.join(process.cwd(), "content"));
+export default async function GalleryPage() {
+  const allPostsData = await getSortedPostsData(
+    path.join(process.cwd(), "content")
+  );
   return (
     <div className="container mx-auto p-8">
       <div className="py-8 space-y-4">
