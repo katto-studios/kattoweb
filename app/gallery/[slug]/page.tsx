@@ -2,7 +2,7 @@ import Image from "next/image";
 import { getFileReadStaticProps, PostData } from "../../../utils/post";
 import { MDXRemote } from "../../../components/mdx/remote";
 
-export const components: any = {
+const components: any = {
   Image,
 };
 
