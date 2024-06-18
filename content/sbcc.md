@@ -1,6 +1,6 @@
 ---
 title: "Revolutionizing Sustainability: Introducing the Singapore Building Carbon Calculator"
-tags: "sustainability, collaboration, public-sector, mvp"
+tags: "web, mvp, sustainability, collaboration, public-sector"
 date: "2023-08-30"
 author: "Ryan, ChatGPT"
 image: "/img/sbcc/demo.png"

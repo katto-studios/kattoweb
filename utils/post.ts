@@ -16,10 +16,9 @@ export type PostData = {
 export async function getSortedPostsData(postsDirectory: string) {
   // Get file names under /posts other than template.md
   const fileNames = (await fs.readdir(postsDirectory)).filter(
-    (fileName) => !fileName.includes("template.md")
+    (fileName) => !fileName.includes("template.md"),
   );
 
-  console.log(fileNames);
   const allPostsData = await Promise.all(
     fileNames.map(async (fileName) => {
       // Remove ".md" from file name to get id
@@ -38,7 +37,7 @@ export async function getSortedPostsData(postsDirectory: string) {
         ...matterResult.data,
         tags: matterResult.data.tags.split(", "),
       };
-    })
+    }),
   );
   console.log(allPostsData);
   // Sort posts by date
@@ -52,14 +51,14 @@ export async function getSortedPostsData(postsDirectory: string) {
       } else {
         return 0;
       }
-    }
+    },
   );
 }
 
 export async function getFileReadStaticProps(slug: string) {
   const fileName = await fs.readFile(
     path.join(process.cwd() + `/content/${slug}.md`),
-    "utf-8"
+    "utf-8",
   );
   const { data, content: rawContent } = matter(fileName);
   const frontmatter = { ...data, tags: data.tags.split(", ") };

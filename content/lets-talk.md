@@ -1,6 +1,6 @@
 ---
 title: "Digitalising Let's Talk!, a Card Game that Develops Students’ Academic Discussion Skills"
-tags: "mvp, web, gamification, edu-tech, public-sector"
+tags: "web, mvp, gamification, edu-tech, public-sector"
 date: "2022-21-12"
 author: "Ryan Tan"
 image: "/img/lets-talk/promo.png"
