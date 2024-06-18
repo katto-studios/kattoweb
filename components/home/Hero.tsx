@@ -9,7 +9,7 @@ const BUZZWORDS = ["digital", "web3", "llm", "gen-ai", "AR/VR/XR"];
 export default function Hero() {
   return (
     <>
-      <div className="w-screen h-screen bg-slate-900 dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative flex items-center justify-center p-8 overflow-hidden">
+      <div className="w-auto h-screen bg-slate-900 dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative flex items-center justify-center p-8 overflow-hidden">
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-slate-900 [mask-image:radial-gradient(ellipse_at_center,transparent_10%,black)]"></div>
         <div className="flex flex-col items-center gap-6">
           <Image
