@@ -1,4 +1,3 @@
-import { Box, Center, Container, Stack, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,20 +5,20 @@ export type ContactPageProps = {};
 
 export default function ContactPage(props: ContactPageProps) {
   return (
-    <Box minH="90vh">
-      <Container maxW="container.xl">
-        <Center h="90vh" gap={10}>
+    <div>
+      <div>
+        <div>
           <Image src="/logo-black.png" alt="logo" width={140} height={90} />
-          <Stack>
+          <div>
             <Link href={"mailto:contact@katto.studio"}>
-              <Text>
+              <p>
                 email us at <b>contact@katto.studio</b>
-              </Text>
+              </p>
             </Link>
-            <Text>address: we are fully remote 🚀 (for now)</Text>
-          </Stack>
-        </Center>
-      </Container>
-    </Box>
+            <p>address: we are fully remote 🚀 (for now)</p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
