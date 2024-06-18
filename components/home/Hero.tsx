@@ -1,57 +1,40 @@
-import {
-  Box,
-  Container,
-  Center,
-  Heading,
-  Text,
-  keyframes,
-  Code,
-} from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { Meteors } from "./meteors";
+import { FlipWords } from "./flip-words";
 
 export type HeroProps = {};
 
-const animationKeyframes = keyframes`
-  0% { transform: rotate(0); }
-  100% { transform:  rotate(360deg);  }
-`;
+const BUZZWORDS = ["digital", "web3", "llm", "gen-ai", "AR/VR/XR"];
 
-const animation = `${animationKeyframes} 10s linear infinite`;
-
-export default function Hero(props: HeroProps) {
+export default function Hero() {
   return (
-    <Container maxW="container.lg">
-      <Box>
-        <Center h="100vh" flexDirection="column">
-          <Box
-            h="fit-content"
-            w="fit-content"
-            mb={10}
-            as={motion.div}
-            animation={animation}
-          >
-            <Image
-              src="/img/dog.png"
-              width={200}
-              height={200}
-              alt="dog in space"
-            />
-          </Box>
-          <Heading size={{ base: "lg", md: "xl" }} fontWeight={600}>
-            Artisans of the{" "}
-            <Code
-              color="pink.400"
-              fontSize={{ base: "xl", md: "28" }}
-              style={{ borderRadius: 5, padding: 5 }}
-            >
-              &apos;digital&apos;
-            </Code>{" "}
+    <>
+      <div className="w-screen h-screen bg-slate-900 dark:bg-dot-white/[0.2] bg-dot-black/[0.2] relative flex items-center justify-center p-8">
+        <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-slate-900 [mask-image:radial-gradient(ellipse_at_center,transparent_10%,black)]"></div>
+        <div className="flex flex-col items-center gap-6">
+          <Image
+            className=" animate-spin-slow"
+            src="/img/dog.png"
+            width={150}
+            height={150}
+            alt="dog in space"
+          />
+          <h1 className="text-8xl text-white font-bold">
+            artisans of the{" "}
+            <span className="font-mono text-7xl">
+              {"{'"}
+              <FlipWords words={BUZZWORDS} />
+              {"'}"}
+            </span>{" "}
             age
-          </Heading>
-          <Text>We hand craft user centric digital solutions</Text>
-        </Center>
-      </Box>
-    </Container>
+          </h1>
+          <p className="text-3xl text-blue-400 font-bold">
+            We hand craft all sorts of digital solutions.
+          </p>
+        </div>
+
+        <Meteors number={100} />
+      </div>
+    </>
   );
 }

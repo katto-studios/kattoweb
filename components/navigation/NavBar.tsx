@@ -1,103 +1,86 @@
-import { HamburgerIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Button,
-  Container,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  IconButton,
-  Input,
-  ring,
-  Stack,
-  StackProps,
-  Text,
-  useMediaQuery,
-} from "@chakra-ui/react";
+"use client";
+
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { ComponentProps, useMemo } from "react";
 import { navLinks } from "./nav-links";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useWindowScrollPositions } from "../../utils/use-scroll-position";
+import { cn } from "../../utils/cn";
 
 export type NavBarProps = {};
 
-export default function NavBar(props: NavBarProps) {
-  const router = useRouter();
-  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
-  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+function NavStack(props: ComponentProps<"div">) {
+  return (
+    <div className="flex flex-row gap-8" {...props}>
+      {navLinks.map((navLink, i) => (
+        <Link
+          className="font-medium hover:text-slate-400"
+          key={navLink.label}
+          href={navLink.url}
+        >
+          {navLink.label}
+        </Link>
+      ))}
+    </div>
+  );
+}
 
-  const onOpen = () => {
-    setIsDrawerOpen(true);
-  };
+function NavContent() {
+  return (
+    <>
+      <Image src="/logo-black.png" alt="logo" width={90} height={90} />
+      <NavStack />
+    </>
+  );
+}
 
-  const onClose = () => {
-    setIsDrawerOpen(false);
-  };
+function HeroNavBar(props: ComponentProps<"div">) {
+  const { scrollY } = useWindowScrollPositions();
+  const isAtTop = useMemo(() => scrollY < 10, [scrollY]);
 
-  function NavStack(props: StackProps) {
+  return (
+    <div
+      className={cn(
+        "fixed w-screen z-10 transition-all duration-300 ease-in-out shadow-sm border-b",
+        isAtTop
+          ? "bg-transparent text-white shadow-transparent border-transparent"
+          : "bg-white text-black"
+      )}
+    >
+      <div
+        className={`container mx-auto flex flex-row justify-between p-8`}
+        {...props}
+      >
+        <Image
+          src="/logo-white.svg"
+          className={cn(isAtTop ? "brightness-100" : "brightness-0")}
+          alt="logo"
+          width={90}
+          height={90}
+        />
+        <NavStack />
+      </div>
+    </div>
+  );
+}
+
+export default function NavBar() {
+  const pathname = usePathname();
+
+  if (pathname === "/") {
     return (
-      <Stack {...props}>
-        {navLinks.map((navLink, i) => (
-          <Button
-            onClick={async () => {
-              await router.push(navLink.url);
-              onClose();
-            }}
-            key={i}
-            variant={router.asPath === navLink.url ? "solid" : "ghost"}
-          >
-            {navLink.label}
-          </Button>
-        ))}
-      </Stack>
+      <HeroNavBar>
+        <NavContent />
+      </HeroNavBar>
     );
   }
 
   return (
-    <Box position="fixed" w="100vw" style={{ zIndex: 1000 }} bgColor="white">
-      <Container maxW="container.xl" p={5}>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Image src="/logo-black.png" alt="logo" width={90} height={90} />
-          {!isLargerThan800 && (
-            <IconButton aria-label={"menu"} mr={3} onClick={onOpen}>
-              <HamburgerIcon />
-            </IconButton>
-          )}
-          {isLargerThan800 && <NavStack direction="row" />}
-        </Box>
-      </Container>
-      <Drawer isOpen={isDrawerOpen} placement={"right"} onClose={onClose}>
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader></DrawerHeader>
-
-          <DrawerBody>
-            <Stack>
-              {navLinks.map((navLink, i) => (
-                <Button
-                  onClick={async () => {
-                    await router.push(navLink.url);
-                    onClose();
-                  }}
-                  key={i}
-                  variant={router.asPath === navLink.url ? "solid" : "ghost"}
-                >
-                  {navLink.label}
-                </Button>
-              ))}
-            </Stack>
-          </DrawerBody>
-
-          <DrawerFooter>
-            <Text fontSize="xs">© Copyright Katto Studios 2023</Text>
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
-    </Box>
+    <div className="bg-white shadow-sm border-b sticky z-10	top-0">
+      <div className="container mx-auto flex flex-row justify-between p-8">
+        <NavContent />
+      </div>
+    </div>
   );
 }
