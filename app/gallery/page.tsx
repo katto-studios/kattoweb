@@ -11,12 +11,12 @@ export type GalleryPageProps = {
 
 export default async function GalleryPage() {
   const allPostsData = await getSortedPostsData(
-    path.join(process.cwd(), "content")
+    path.join(process.cwd(), "content"),
   );
   return (
     <div className="container mx-auto p-8">
       <div className="py-8 space-y-4">
-        <h1 className="text-5xl  text-slate-600">gallery</h1>
+        <h1 className="text-5xl  text-slate-600">Gallery</h1>
         <p className="text-lg text-slate-700 font-medium">
           Some projects that we have worked on. Click on a project to learn
           more.
