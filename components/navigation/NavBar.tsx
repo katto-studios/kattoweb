@@ -29,7 +29,9 @@ function NavStack(props: ComponentProps<"div">) {
 function NavContent() {
   return (
     <>
-      <Image src="/logo-black.png" alt="logo" width={90} height={90} />
+      <Link href="/">
+        <Image src="/logo-black.png" alt="logo" width={90} height={90} />
+      </Link>
       <NavStack />
     </>
   );
@@ -45,7 +47,7 @@ function HeroNavBar(props: ComponentProps<"div">) {
         "fixed w-screen z-10 transition-all duration-300 ease-in-out shadow-sm border-b",
         isAtTop
           ? "bg-transparent text-white shadow-transparent border-transparent"
-          : "bg-white text-black"
+          : "bg-white text-black",
       )}
     >
       <div
