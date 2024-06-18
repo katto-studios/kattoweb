@@ -18,21 +18,21 @@ export default async function BlogPostPage({
   const { title, description, tags } = frontMatter as PostData;
 
   return (
-    <div>
-      <div>
-        {title && <h1>{title}</h1>}
-        {description && <p>{description}</p>}
-        {tags && (
-          <div>
-            {tags.map((tag, i) => (
-              <div key={i}>
-                <b>{tag}</b>
-              </div>
-            ))}
-          </div>
-        )}
+    <div className="container mx-auto p-8 space-y-4">
+      {title && <h1 className="text-7xl font-light text-slate-700">{title}</h1>}
+      {description && <p>{description}</p>}
+      {tags && (
+        <div className="flex flex-row gap-3">
+          {tags.map((tag, i) => (
+            <div key={i}>
+              <b>{tag}</b>
+            </div>
+          ))}
+        </div>
+      )}
+      <section className="mdx-area">
         <MDXRemote {...content} components={components} />
-      </div>
+      </section>
     </div>
   );
 }

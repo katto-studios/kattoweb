@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.mdx-area {
+  @apply max-w-screen-lg mx-auto px-8 py-10;
+}
+
+.mdx-area h1 {
+  @apply text-4xl mt-6 mb-4;
+}
+
+.mdx-area h2 {
+  @apply text-3xl mt-6 mb-4;
+}
+
+.mdx-area h3 {
+  @apply text-2xl mt-6 mb-4;
+}
+
+.mdx-area p {
+  @apply text-lg mt-3 mb-3;
+}
+
+.mdx-area table {
+  @apply mt-6 mb-4 bg-slate-100 text-sm;
+}
