@@ -39,7 +39,6 @@ export async function getSortedPostsData(postsDirectory: string) {
       };
     }),
   );
-  console.log(allPostsData);
   // Sort posts by date
   return (allPostsData as any as PostData[]).sort(
     ({ date: a }, { date: b }) => {
