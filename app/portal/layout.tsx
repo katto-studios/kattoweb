@@ -19,7 +19,7 @@ export default async function Layout({
 
   return (
     <>
-      <form className="w-screen flex justify-center items-center border-t-8 border-t-orange-300">
+      <form className="w-full flex justify-center items-center border-t-8 border-t-orange-300">
         <div className="bg-orange-300 text-orange-900 pt-0 px-4 pb-2 gap-1 rounded-b-lg space-x-1">
           Logged in as <strong>{data.user.email}</strong>
           <button formAction={signOut}>

@@ -2,7 +2,6 @@ import ResourcesCard from "@/components/project/dash/resources";
 import { TeamCard } from "@/components/project/dash/team";
 import StatusBadge from "@/components/project/status-badge";
 import { createClient } from "@/utils/supabase/server";
-import Image from "next/image";
 import { redirect } from "next/navigation";
 
 export default async function ProjectPage({
@@ -40,14 +39,10 @@ export default async function ProjectPage({
       memberProjectRoles.map((role) => role.user_id)
     );
 
-  console.log(members);
-
   const memberProjectRolesWithProfile = memberProjectRoles.map((role) => {
     const profile = members?.find((member) => member.user_id === role.user_id);
     return { ...role, profile };
   });
-
-  console.log(memberProjectRolesWithProfile);
 
   return (
     <div className="container mx-auto p-8 space-y-4 min-h-[70vh]">
@@ -66,6 +61,7 @@ export default async function ProjectPage({
         {project.resources && (
           <ResourcesCard
             className="col-span-2"
+            projectId={project.project_id}
             resources={project.resources as Record<string, string>}
           />
         )}
