@@ -11,16 +11,24 @@ export type ProjectCardProps = ComponentProps<"div"> & {
     color: string;
     displayName: string;
   };
+  description?: string;
   isActive: boolean;
 };
 
-function ProjectCard({ name, id, roleInfo, isActive }: ProjectCardProps) {
+function ProjectCard({
+  name,
+  id,
+  roleInfo,
+  description,
+  isActive,
+}: ProjectCardProps) {
   return (
     <Link
       href={`/portal/project/${id}`}
       className="flex flex-col gap-2 border p-6 rounded-xl shadow-sm"
     >
       <h3 className="text-2xl">{name}</h3>
+      <p className="text-lg text-slate-500">{description}</p>
       <div className="space-x-2">
         {roleInfo && (
           <Badge
@@ -47,6 +55,7 @@ ProjectCard.fromProjectRole = ({
   project_id: string;
   project: {
     name: string;
+    description: string;
   } | null;
   role: Database["public"]["Enums"]["role_title"] | null;
   is_active: boolean;
@@ -57,6 +66,7 @@ ProjectCard.fromProjectRole = ({
       key={project_id}
       id={project_id}
       name={project?.name}
+      description={project?.description}
       roleInfo={roleInfo ?? undefined}
       isActive={is_active}
     />

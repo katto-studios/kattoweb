@@ -1,6 +1,7 @@
 import { createClient } from "../../utils/supabase/server";
 import { redirect } from "next/navigation";
 import { signOut } from "./actions";
+import { LogOut } from "lucide-react";
 
 export default async function Layout({
   // Layouts must accept a children prop.
@@ -18,14 +19,11 @@ export default async function Layout({
 
   return (
     <>
-      <form className="w-screen flex justify-center items-center border-t-8 border-t-orange-300 ">
-        <div className="bg-orange-300 pt-0 px-4 pb-2 gap-1 rounded-b-lg space-x-2">
+      <form className="w-screen flex justify-center items-center border-t-8 border-t-orange-300">
+        <div className="bg-orange-300 text-orange-900 pt-0 px-4 pb-2 gap-1 rounded-b-lg space-x-1">
           Logged in as <strong>{data.user.email}</strong>
-          <button
-            formAction={signOut}
-            className="bg-orange-500 px-2 py-1 rounded text-orange-800"
-          >
-            logout
+          <button formAction={signOut}>
+            <LogOut className="h-3" />
           </button>
         </div>
       </form>

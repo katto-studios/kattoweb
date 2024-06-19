@@ -16,7 +16,8 @@ export default async function PrivatePage() {
       `
 		project_id,
 		project(
-			name
+			name,
+			description
 		),
 		role,
 		is_active
@@ -42,7 +43,7 @@ export default async function PrivatePage() {
           </p>
         </div>
       ) : (
-        <div className="grid lg:grid-cols-3">
+        <div className="grid lg:grid-cols-3 gap-4">
           {myProjectRoles.map(ProjectCard.fromProjectRole)}
         </div>
       )}

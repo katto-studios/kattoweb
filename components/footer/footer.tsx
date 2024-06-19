@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,7 +9,7 @@ export default function Footer(props: FooterProps) {
   return (
     <div className="bg-slate-700 text-slate-300 px-8 py-12">
       <div className="container mx-auto flex flex-col gap-8">
-        <Image src="logo-white.svg" width="100" height="50" alt="katto" />
+        <Image src="/logo-white.svg" width="100" height="50" alt="logo" />
         <div className="flex flex-row gap-20">
           <div className="flex flex-col gap-2.5 text-lg py-4">
             <p className="text-white">Pages</p>
