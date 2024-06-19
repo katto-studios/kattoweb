@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/shadcn/ui/table";
-import { Check, Trash2 } from "lucide-react";
+import { Copy, EllipsisVertical, Plus, Trash2 } from "lucide-react";
 import Input from "@/components/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -23,9 +23,18 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/shadcn/ui/form";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/shadcn/ui/dropdown-menu";
 import { createClient } from "@/utils/supabase/client";
 import { revalidatePath } from "next/cache";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export type ResourcesCardProps = {
   projectId: string;
@@ -56,12 +65,14 @@ export default function ResourcesCard({
   const form = useForm<ResourceRow>({ resolver });
 
   const onSubmit = async ({ key, value }: { key: string; value?: string }) => {
+    toast("Updating resources table... ⬆️");
     await supabase
       .from("project")
       .update({ resources: { ...resources, [key]: value } })
       .eq("project_id", projectId);
     form.reset({ key: "", value: "" });
     router.refresh();
+    toast("Resources table updated 🚀");
   };
 
   return (
@@ -74,7 +85,7 @@ export default function ResourcesCard({
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[100px]">Key</TableHead>
-                <TableHead className="text-right">Value</TableHead>
+                <TableHead>Value</TableHead>
                 <TableHead className="text-right w-[30px]">Actions</TableHead>
               </TableRow>
             </TableHeader>
@@ -82,15 +93,34 @@ export default function ResourcesCard({
               {Object.entries(resources).map(([name, url]) => (
                 <TableRow key={name}>
                   <TableCell>{name}</TableCell>
-                  <TableCell className="text-right font-mono">{url}</TableCell>
-                  <TableCell className="text-right">
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      onClick={() => onSubmit({ key: name, value: undefined })}
-                    >
-                      <Trash2 />
-                    </Button>
+                  <TableCell className="text-right font-mono overflow-x-clip">
+                    <Input className="w-full" value={url} />
+                  </TableCell>
+                  <TableCell className="text-right flex flex-row">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger>
+                        <EllipsisVertical />
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent>
+                        <DropdownMenuItem
+                          onClick={(e) => {
+                            navigator.clipboard.writeText(url);
+                            toast("Copied to clipboard! 📋");
+                          }}
+                        >
+                          <Copy className="mr-2 h-4 w-4" />
+                          <span>Copy</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={(e) => {
+                            onSubmit({ key: name, value: undefined });
+                          }}
+                        >
+                          <Trash2 className="mr-2 h-4 w-4" />
+                          <span>Delete</span>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </TableCell>
                 </TableRow>
               ))}
@@ -129,7 +159,7 @@ export default function ResourcesCard({
                 </TableCell>
                 <TableCell>
                   <Button type="submit" size="icon">
-                    <Check />
+                    <Plus />
                   </Button>
                 </TableCell>
               </TableRow>

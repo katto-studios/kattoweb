@@ -3,6 +3,7 @@ import "./globals.css";
 import { Metadata } from "next";
 import NavBar from "../components/navigation/NavBar";
 import Footer from "../components/footer/footer";
+import { Toaster } from "@/components/shadcn/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Katto Studios",
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body>
         <NavBar />
         {children}
+        <Toaster />
         <Footer />
       </body>
     </html>

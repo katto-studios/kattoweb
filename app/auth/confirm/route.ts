@@ -23,6 +23,7 @@ export async function GET(request: NextRequest) {
     });
     if (!error) {
       redirectTo.searchParams.delete("next");
+      redirectTo.pathname = "/portal";
       return NextResponse.redirect(redirectTo);
     }
   }

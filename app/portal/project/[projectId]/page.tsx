@@ -1,3 +1,4 @@
+import BackButton from "@/components/navigation/back";
 import ResourcesCard from "@/components/project/dash/resources";
 import { TeamCard } from "@/components/project/dash/team";
 import StatusBadge from "@/components/project/status-badge";
@@ -46,6 +47,7 @@ export default async function ProjectPage({
 
   return (
     <div className="container mx-auto p-8 space-y-4 min-h-[70vh]">
+      <BackButton />
       <h1 className="text-5xl font-light text-slate-700">{project.name}</h1>
       <StatusBadge status={project.status} />
       <p className="text-lg font-medium text-slate-500">

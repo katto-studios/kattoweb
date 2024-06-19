@@ -1,46 +1,34 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 
 import { createClient } from "../../utils/supabase/server";
+import { URL } from "url";
 
-export async function login(formData: FormData) {
+export async function signInWithEmail(formData: FormData) {
   const supabase = createClient();
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
-  };
+  const email = formData.get("email") as string;
 
-  const { error } = await supabase.auth.signInWithPassword(data);
+  const headersList = headers();
+
+  const url = new URL(headersList.get("referer") ?? ""); // to get url
+  url.pathname = "/portal";
+
+  const { error } = await supabase.auth.signInWithOtp({
+    email: email,
+    options: {
+      // set this to false if you do not want the user to be automatically signed up
+      shouldCreateUser: false,
+      emailRedirectTo: url.href,
+    },
+  });
 
   if (error) {
+    console.log(error);
     redirect("/error");
   }
 
-  revalidatePath("/", "layout");
-  redirect("/portal");
-}
-
-export async function signup(formData: FormData) {
-  const supabase = createClient();
-
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
-  };
-
-  const { error } = await supabase.auth.signUp(data);
-
-  if (error) {
-    redirect("/error");
-  }
-
-  revalidatePath("/", "layout");
-  redirect("/portal");
+  redirect("/auth/check-email");
 }
