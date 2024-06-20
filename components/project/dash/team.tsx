@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../../shadcn/ui/avatar";
 import { PROJECT_ROLE_MAP } from "@/utils/project-role";
 import { DashCard, DashCardTitle } from "./card";
 import { Badge } from "@/components/shadcn/ui/badge";
-import { createHash } from "crypto";
+import { buildGravatarUrl } from "@/utils/gravatar";
 
 export type TeamCardProps = {
   members: {
@@ -28,11 +28,7 @@ function TeamCard({ members }: TeamCardProps) {
             <div className="flex flex-row gap-2">
               <Avatar>
                 {member.email && (
-                  <AvatarImage
-                    src={`https://www.gravatar.com/avatar/${createHash("md5")
-                      .update(member.email.toLowerCase())
-                      .digest("hex")}?&d=404`}
-                  />
+                  <AvatarImage src={buildGravatarUrl(member.email).href} />
                 )}
                 <AvatarFallback>
                   {member.name[0].toLocaleUpperCase()}

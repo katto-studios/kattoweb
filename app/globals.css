@@ -81,3 +81,7 @@
 .mdx-area table {
   @apply mt-6 mb-4 bg-slate-100 text-sm;
 }
+
+.page-container {
+  @apply container mx-auto p-8 min-h-[70vh];
+}

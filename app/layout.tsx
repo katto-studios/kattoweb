@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import NavBar from "../components/navigation/NavBar";
 import Footer from "../components/footer/footer";
 import { Toaster } from "@/components/shadcn/ui/sonner";
+import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
   title: "Katto Studios",
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <NextTopLoader />
         <NavBar />
         {children}
         <Toaster />

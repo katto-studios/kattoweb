@@ -1,14 +1,9 @@
 import { redirect } from "next/navigation";
-import { createClient } from "../../utils/supabase/server";
+import { createAuthenticatedClient } from "../../utils/supabase/server";
 import { ProjectCard } from "@/components/project/card";
 
 export default async function PrivatePage() {
-  const supabase = createClient();
-
-  const { data, error } = await supabase.auth.getUser();
-  if (error || !data?.user) {
-    redirect("/login");
-  }
+  const { userData, supabase } = await createAuthenticatedClient();
 
   const { data: myProjectRoles, error: roleError } = await supabase
     .from("project_role")
@@ -23,7 +18,7 @@ export default async function PrivatePage() {
 		is_active
 	`
     )
-    .eq("user_id", data.user.id);
+    .eq("user_id", userData.user.id);
 
   if (roleError) {
     console.error(roleError);
@@ -32,8 +27,10 @@ export default async function PrivatePage() {
   const noProjects = !myProjectRoles || myProjectRoles.length <= 0;
 
   return (
-    <div className="min-h-[70vh] container mx-auto p-8 space-y-8">
-      <h1 className="text-5xl font-light">Welcome back, {data.user.email}</h1>
+    <div className="page-container space-y-8">
+      <h1 className="text-5xl font-light">
+        Welcome back, {userData.user.email}
+      </h1>
       {noProjects ? (
         <div>
           <h1 className="text-slate-500 text-3xl">You have no projects. </h1>

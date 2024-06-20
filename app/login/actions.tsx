@@ -1,6 +1,6 @@
 "use server";
 
-import { redirect } from "next/navigation";
+import { RedirectType, redirect } from "next/navigation";
 import { headers } from "next/headers";
 
 import { createClient } from "../../utils/supabase/server";
@@ -19,15 +19,15 @@ export async function signInWithEmail(formData: FormData) {
   const { error } = await supabase.auth.signInWithOtp({
     email: email,
     options: {
-      // set this to false if you do not want the user to be automatically signed up
-      shouldCreateUser: false,
+      shouldCreateUser: true,
       emailRedirectTo: url.href,
     },
   });
 
   if (error) {
-    console.log(error);
-    redirect("/error");
+    const searchParams = new URLSearchParams();
+    searchParams.set("message", error.message);
+    redirect("/login?" + searchParams.toString(), RedirectType.replace);
   }
 
   redirect("/auth/check-email");

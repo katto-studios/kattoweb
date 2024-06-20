@@ -35,3 +35,17 @@ export function createClient() {
     }
   );
 }
+
+/**
+ * Create a Supabase client with the current user's session.
+ * @throws Error if the user is not authenticated.
+ */
+export async function createAuthenticatedClient() {
+  const supabase = createClient();
+  const { data, error } = await supabase.auth.getUser();
+
+  if (error || !data) {
+    throw new Error("User is not authenticated");
+  }
+  return { userData: data, supabase };
+}
