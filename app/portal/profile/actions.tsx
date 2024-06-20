@@ -11,6 +11,10 @@ export async function onUpdateProfile(formData: FormData) {
   try {
     const { userData, supabase } = await createAuthenticatedClient();
 
+    if (!userData.user) {
+      throw new Error("User not found");
+    }
+
     const data = {
       username: formData.get("name"),
       email: formData.get("email"),
@@ -20,15 +24,13 @@ export async function onUpdateProfile(formData: FormData) {
 
     const validatedData = profileSchema.parse(data);
 
-    const { error } = await supabase
-      .from("profile")
-      .update({
-        display_name: validatedData.username,
-        email: validatedData.email,
-        org_name: validatedData.orgName,
-        org_title: validatedData.orgTitle,
-      })
-      .eq("user_id", userData.user?.id);
+    const { error } = await supabase.from("profile").upsert({
+      user_id: userData.user.id,
+      display_name: validatedData.username,
+      email: validatedData.email,
+      org_name: validatedData.orgName,
+      org_title: validatedData.orgTitle,
+    });
 
     if (error) {
       throw new Error(error.message);
