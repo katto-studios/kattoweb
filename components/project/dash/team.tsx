@@ -1,9 +1,7 @@
 import { Database } from "@/utils/supabase/types";
-import { Avatar, AvatarFallback, AvatarImage } from "../../shadcn/ui/avatar";
 import { PROJECT_ROLE_MAP } from "@/utils/project-role";
-import { DashCard, DashCardTitle } from "./card";
-import { Badge } from "@/components/shadcn/ui/badge";
-import { buildGravatarUrl } from "@/utils/gravatar";
+import { DashCard, DashCardProps, DashCardTitle } from "./card";
+import MemberCard from "../member-card";
 
 export type TeamCardProps = {
   members: {
@@ -13,48 +11,24 @@ export type TeamCardProps = {
     roleName: string;
     color: string;
   }[];
-};
+} & DashCardProps;
 
-function TeamCard({ members }: TeamCardProps) {
+function TeamCard({ members, ...props }: TeamCardProps) {
   return (
-    <DashCard>
+    <DashCard {...props}>
       <DashCardTitle>Team</DashCardTitle>
       <div className="space-y-2">
         {members.map((member) => (
-          <div
-            key={member.id}
-            className="flex flex-row justify-between items-center p-2 border rounded-xl gap-2"
-          >
-            <div className="flex flex-row gap-2">
-              <Avatar>
-                {member.email && (
-                  <AvatarImage src={buildGravatarUrl(member.email).href} />
-                )}
-                <AvatarFallback>
-                  {member.name[0].toLocaleUpperCase()}
-                </AvatarFallback>
-              </Avatar>
-              <div>
-                <p className="text-sm font-medium">{member.name}</p>
-
-                <p className="text-xs font-medium">{member.email}</p>
-              </div>
-            </div>
-            <Badge
-              variant="secondary"
-              style={{ backgroundColor: member.color }}
-            >
-              {member.roleName}
-            </Badge>
-          </div>
+          <MemberCard key={member.id} {...member} />
         ))}
       </div>
     </DashCard>
   );
 }
 
-TeamCard.fromMemberProjectRoles = ({
+TeamCard.FromMemberProjectRoles = function FromMemberProjectRoles({
   members,
+  ...props
 }: {
   members: {
     user_id: string;
@@ -65,7 +39,7 @@ TeamCard.fromMemberProjectRoles = ({
       email: string | null;
     };
   }[];
-}) => {
+} & Omit<TeamCardProps, "members">) {
   return (
     <TeamCard
       members={members.map(({ user_id, role, profile }) => {
@@ -86,6 +60,7 @@ TeamCard.fromMemberProjectRoles = ({
           color: color,
         };
       })}
+      {...props}
     />
   );
 };

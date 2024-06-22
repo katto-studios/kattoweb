@@ -31,7 +31,18 @@ export const PROJECT_ROLE_MAP = {
     shortHand: "QA",
     color: "hsla(135, 50%, 80%, 1)",
   },
-} satisfies ProjectRoleMap;
+  MEMBER: {
+    displayName: "Member",
+    shortHand: "MEM",
+    color: "hsla(0, 0%, 80%, 1)",
+  },
+} satisfies ProjectRoleMap & {
+  [key: string]: {
+    displayName: string;
+    shortHand: string;
+    color: string;
+  };
+};
 
 type ProjectRoleMap = Record<
   Database["public"]["Enums"]["role_title"],

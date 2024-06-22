@@ -80,6 +80,7 @@ export type Database = {
           role: Database["public"]["Enums"]["role_title"] | null
           updated_at: string
           user_id: string
+          is_allowed_to_view_role: boolean | null
         }
         Insert: {
           created_at?: string
@@ -116,12 +117,82 @@ export type Database = {
           },
         ]
       }
+      transaction: {
+        Row: {
+          amount: number
+          created_at: string
+          description: string | null
+          due: string | null
+          from_user_id: string | null
+          project_id: string | null
+          status: Database["public"]["Enums"]["transaction_status"]
+          to_user_id: string | null
+          transaction_id: string
+          type: Database["public"]["Enums"]["transaction_type"]
+        }
+        Insert: {
+          amount?: number
+          created_at?: string
+          description?: string | null
+          due?: string | null
+          from_user_id?: string | null
+          project_id?: string | null
+          status?: Database["public"]["Enums"]["transaction_status"]
+          to_user_id?: string | null
+          transaction_id?: string
+          type: Database["public"]["Enums"]["transaction_type"]
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          description?: string | null
+          due?: string | null
+          from_user_id?: string | null
+          project_id?: string | null
+          status?: Database["public"]["Enums"]["transaction_status"]
+          to_user_id?: string | null
+          transaction_id?: string
+          type?: Database["public"]["Enums"]["transaction_type"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "transaction_from_user_id_fkey"
+            columns: ["from_user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "transaction_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "project"
+            referencedColumns: ["project_id"]
+          },
+          {
+            foreignKeyName: "transaction_to_user_id_fkey"
+            columns: ["to_user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_allowed_to_view_role: {
+        Args: {
+          "": unknown
+        }
+        Returns: boolean
+      }
+      is_katto: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
     }
     Enums: {
       project_status: "ACTIVE" | "DROPPED"
@@ -132,6 +203,8 @@ export type Database = {
         | "UIUX"
         | "INFRA"
         | "QA"
+      transaction_status: "PENDING" | "PAID" | "CANCELLED"
+      transaction_type: "EXPENSE" | "REVENUE"
     }
     CompositeTypes: {
       [_ in never]: never

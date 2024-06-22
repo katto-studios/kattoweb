@@ -27,12 +27,9 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
 import { createClient } from "@/utils/supabase/client";
-import { revalidatePath } from "next/cache";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
