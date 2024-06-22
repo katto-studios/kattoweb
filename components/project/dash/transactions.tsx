@@ -44,7 +44,7 @@ function TransactionTypeBadge({ type }: { type: string }) {
 
 function TransactionStatusBadge({ status }: { status?: string }) {
   if (!status) {
-    return "-";
+    return <>-</>;
   }
   switch (status) {
     case "PENDING":
